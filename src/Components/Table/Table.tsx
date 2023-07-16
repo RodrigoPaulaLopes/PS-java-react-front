@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
-import IResTponse, { ITransfers } from "../../Interfaces/Interfaces";
+import { ITransfers } from "../../Interfaces/Interfaces";
 import { changeClass } from "../../Helpers/activeClass";
 import request from "../../API/request";
 import IResponse from "../../Interfaces/Interfaces";
@@ -30,7 +30,7 @@ export default function Table({
         const dados: IResponse = res.data as IResponse;
         setTotalTransfer(dados.content);
       })
-      .catch((err) => setTotalTransfer([]));
+      .catch(() => setTotalTransfer([]));
 
     const soma1 = totalTransfer.reduce((total, item) => total + item.valor, 0);
     setSaldoTotal(soma1);
@@ -38,7 +38,7 @@ export default function Table({
     const soma2= transfers.reduce((total, item) => total + item.valor, 0);
     setSaldoPeriodo(soma2);
     
-  }, [transfers]);
+  }, [totalTransfer, transfers]);
 
   function changePage(
     e: React.MouseEvent<HTMLInputElement, MouseEvent>,

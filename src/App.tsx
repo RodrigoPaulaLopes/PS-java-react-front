@@ -46,7 +46,7 @@ function App() {
         setTotalPages(dados.totalPages)
         setTransfers(dados.content);
       })
-      .catch((err) => setTransfers([]));
+      .catch(() => setTransfers([]));
   }, [size, page, totalPages, operadorTransacao, numeroConta, dataInicial, dataFinal]);
 
   return (

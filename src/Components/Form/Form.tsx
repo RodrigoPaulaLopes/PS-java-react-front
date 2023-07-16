@@ -19,12 +19,7 @@ function Form({
   setDataFinal,
   setDataInicial,
 }: IFormProps) {
-  const [values, setValues] = useState<IParams>({
-    dataFinal: undefined,
-    dataInicial: undefined,
-    numeroConta: undefined,
-    operadorTransacao: undefined,
-  });
+  const [values, setValues] = useState<IParams>(initialValues);
 
   function onChange(e: React.ChangeEvent<HTMLInputElement>) {
     const { name, value } = e.target;
